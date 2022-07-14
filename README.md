@@ -2,7 +2,7 @@
 
 ## Notes
 
-This project is built to demonstrate Spring JDBC.
+This project is built to demonstrate Spring JDBC & Spring Data JPA.
 
 ## Contacts
 
