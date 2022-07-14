@@ -31,19 +31,19 @@ public class PlayerDao {
     }
 
     public List<Player> getAllPlayers() {
-        String sql = "SELECT * FROM PLAYER";
+        String sql = "SELECT * FROM Player";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<Player>(Player.class));
     }
 
     public Player getPlayerById(int id) {
-        String sql = "SELECT * FROM PLAYER WHERE ID = ?";
+        String sql = "SELECT * FROM Player WHERE ID = ?";
         return jdbcTemplate.queryForObject(sql,
                 new BeanPropertyRowMapper<Player>(Player.class),
                 new Object[]{id});
     }
 
     public int insertPlayer(Player player) {
-        String sql = "INSERT INTO PLAYER (ID, Name, Nationality, Birth_date, Titles) " +
+        String sql = "INSERT INTO Player (ID, Name, Nationality, Birth_date, Titles) " +
                 "VALUES(?, ?, ?, ?, ?)";
         return jdbcTemplate.update(sql, new Object[]
                 {player.getId(), player.getName(), player.getNationality(),
@@ -52,7 +52,7 @@ public class PlayerDao {
     }
 
     public int updatePlayer(Player player) {
-        String sql = "UPDATE PLAYER " +
+        String sql = "UPDATE Player " +
                 "SET Name = ?, Nationality = ?, Birth_date = ?, Titles = ? " +
                 "WHERE Id = ?";
         return jdbcTemplate.update(sql, new Object[]{
@@ -64,7 +64,7 @@ public class PlayerDao {
     }
 
     public int deleteByPlayerId(int id) {
-        String sql = "DELETE FROM PLAYER WHERE ID = ?";
+        String sql = "DELETE FROM Player WHERE ID = ?";
         return jdbcTemplate.update(sql, new Object[]{id});
     }
 
@@ -76,7 +76,7 @@ public class PlayerDao {
     }
 
     public List<Player> getPlayerByNationality(String nationality) {
-        String sql = "SELECT * FROM PLAYER WHERE NATIONALITY = ?";
+        String sql = "SELECT * FROM Player WHERE NATIONALITY = ?";
         return jdbcTemplate.query(sql, new PlayerMapper(), new Object[] {nationality});
     }
 }
